@@ -1,10 +1,10 @@
 local editor = {}
 
-editor["rainbowhxch/accelerated-jk.nvim"] = {
-	lazy = true,
-	event = "VeryLazy",
-	config = require("editor.accelerated-jk"),
-}
+-- editor["rainbowhxch/accelerated-jk.nvim"] = {
+-- 	lazy = true,
+-- 	event = "VeryLazy",
+-- 	config = require("editor.accelerated-jk"),
+-- }
 editor["olimorris/persisted.nvim"] = {
 	lazy = true,
 	cmd = {
