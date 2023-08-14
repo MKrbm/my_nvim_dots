@@ -99,12 +99,12 @@ local plug_map = {
 		:with_noremap()
 		:with_silent()
 		:with_desc("edit: Show undo history"),
-	["n|<leader>fp"] = map_callback(function()
-			require("telescope").extensions.projects.projects({})
-		end)
-		:with_noremap()
-		:with_silent()
-		:with_desc("find: Project"),
+	-- ["n|<leader>fp"] = map_callback(function()
+	-- 		require("telescope").extensions.projects.projects({})
+	-- 	end)
+	-- 	:with_noremap()
+	-- 	:with_silent()
+	-- 	:with_desc("find: Project"),
 	["n|<leader>fr"] = map_callback(function()
 			require("telescope").extensions.frecency.frecency({})
 		end)
