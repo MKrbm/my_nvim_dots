@@ -70,7 +70,7 @@ return function()
 			lightspeed = false,
 			lsp_saga = true,
 			lsp_trouble = true,
-			markdown = true,
+			-- markdown = true,
 			mason = true,
 			mini = false,
 			navic = { enabled = false },

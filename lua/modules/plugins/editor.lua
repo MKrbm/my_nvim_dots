@@ -81,12 +81,12 @@ editor["lambdalisue/suda.vim"] = {
 --                  :treesitter related plugins                    --
 ----------------------------------------------------------------------
 editor["nvim-treesitter/nvim-treesitter"] = {
-	lazy = true,
-	build = function()
-		if #vim.api.nvim_list_uis() ~= 0 then
-			vim.api.nvim_command("TSUpdate")
-		end
-	end,
+	lazy = false,
+	-- build = function()
+	-- 	if #vim.api.nvim_list_uis() ~= 0 then
+	-- 		vim.api.nvim_command("TSUpdate")
+	-- 	end
+	-- end,
 	event = "BufReadPost",
 	config = require("editor.treesitter"),
 	dependencies = {
