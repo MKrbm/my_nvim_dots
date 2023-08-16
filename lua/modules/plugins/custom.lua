@@ -1,7 +1,7 @@
 local custom = {}
 
-custom["github/copilot.vim"] = {
-	lazy = false,
-}
+-- custom["github/copilot.vim"] = {
+-- 	lazy = false,
+-- }
 
 return custom

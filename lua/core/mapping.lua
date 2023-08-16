@@ -53,7 +53,8 @@ local core_map = {
 	["v|K"] = map_cmd(":m '<-2<CR>gv=gv"):with_desc("edit: Move this line up"),
 	["v|<"] = map_cmd("<gv"):with_desc("edit: Decrease indent"),
 	["v|>"] = map_cmd(">gv"):with_desc("edit: Increase indent"),
-
+	["nv|<leader>]"] = map_cmd("G"):with_desc("end of file"),
+	["nv|<leader>["] = map_cmd("gg"):with_desc("beginning of file"),
 	-- remove default keymaps for copilot action
 }
 

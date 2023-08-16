@@ -1,5 +1,10 @@
 local global = require("core.global")
 
+-- vim.opt.fillchars:append("vert:▏")
+
+-- vim.cmd([[ highlight NvimTreeVertSplit guifg=#24283b]])
+
+-- vim.cmd([[ highlight NvimTreeVertSplit guibg=#1f2335]])
 -- Create cache dir and data dirs
 local createdir = function()
 	local data_dir = {
@@ -158,6 +163,7 @@ local load_core = function()
 	require("keymap")
 	require("core.event")
 	require("core.pack")
+	require("core/custom/highlight")
 
 	local colorscheme = require("core.settings").colorscheme
 	local background = require("core.settings").background

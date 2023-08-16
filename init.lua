@@ -7,6 +7,7 @@ vim.opt.shell = "/bin/bash"
 vim.g.copilot = true
 
 require("modules.configs.completion.copilot")
+
 -- vim.api.nvim_set_keymap("i", "<C-k>", "", { silent = true })
 -- vim.api.nvim_set_keymap("i", "<C-h>", "", { silent = true })
 -- vim.api.nvim_set_keymap("i", "<C-l>", "", { silent = true })

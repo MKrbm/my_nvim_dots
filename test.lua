@@ -1,0 +1,1 @@
+-- function that receives list of numbser and returns their sum

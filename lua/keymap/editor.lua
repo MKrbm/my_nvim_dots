@@ -31,7 +31,7 @@ local plug_map = {
 	end):with_expr(),
 
 	-- Plugin: comment.nvim
-	["n|gcc"] = map_callback(function()
+	["n|<leader>/"] = map_callback(function()
 			return vim.v.count == 0 and et("<Plug>(comment_toggle_linewise_current)")
 				or et("<Plug>(comment_toggle_linewise_count)")
 		end)
@@ -47,15 +47,15 @@ local plug_map = {
 		:with_noremap()
 		:with_expr()
 		:with_desc("edit: Toggle comment for block"),
-	["n|gc"] = map_cmd("<Plug>(comment_toggle_linewise)")
-		:with_silent()
-		:with_noremap()
-		:with_desc("edit: Toggle comment for line with operator"),
+	-- ["n|gc"] = map_cmd("<Plug>(comment_toggle_linewise)")
+	-- 	:with_silent()
+	-- 	:with_noremap()
+	-- 	:with_desc("edit: Toggle comment for line with operator"),
 	["n|gb"] = map_cmd("<Plug>(comment_toggle_blockwise)")
 		:with_silent()
 		:with_noremap()
 		:with_desc("edit: Toggle comment for block with operator"),
-	["x|<Space>/"] = map_cmd("<Plug>(comment_toggle_linewise_visual)")
+	["x|<leader>/"] = map_cmd("<Plug>(comment_toggle_linewise_visual)")
 		:with_silent()
 		:with_noremap()
 		:with_desc("edit: Toggle comment for line with selection"),

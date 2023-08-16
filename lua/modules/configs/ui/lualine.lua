@@ -18,27 +18,27 @@ return function()
 		})
 
 		colors = require("modules.utils").get_palette()
-		local universal_bg = require("core.settings").transparent_background and "NONE" or colors.mantle
+		local universal_bg = require("core.settings").transparent_background and "NONE" or colors.surface0
 		return {
 			normal = {
-				a = { fg = colors.lavender, bg = colors.surface0, gui = "bold" },
+				a = { fg = colors.lavender, bg = colors.surface1, gui = "bold" },
 				b = { fg = colors.text, bg = universal_bg },
 				c = { fg = colors.text, bg = universal_bg },
 			},
 			command = {
-				a = { fg = colors.peach, bg = colors.surface0, gui = "bold" },
+				a = { fg = colors.peach, bg = colors.surface1, gui = "bold" },
 			},
 			insert = {
-				a = { fg = colors.green, bg = colors.surface0, gui = "bold" },
+				a = { fg = colors.green, bg = colors.surface1, gui = "bold" },
 			},
 			visual = {
-				a = { fg = colors.flamingo, bg = colors.surface0, gui = "bold" },
+				a = { fg = colors.flamingo, bg = colors.surface1, gui = "bold" },
 			},
 			terminal = {
-				a = { fg = colors.teal, bg = colors.surface0, gui = "bold" },
+				a = { fg = colors.teal, bg = colors.surface1, gui = "bold" },
 			},
 			replace = {
-				a = { fg = colors.red, bg = colors.surface0, gui = "bold" },
+				a = { fg = colors.red, bg = colors.surface1, gui = "bold" },
 			},
 			inactive = {
 				a = { fg = colors.subtext0, bg = universal_bg, gui = "bold" },
@@ -108,7 +108,7 @@ return function()
 		gen_hl = function(fg, gen_bg, special_nobg, bg, gui)
 			return function()
 				local guifg = colors[fg]
-				local guibg = gen_bg and require("modules.utils").hl_to_rgb("StatusLine", true, colors.mantle)
+				local guibg = gen_bg and require("modules.utils").hl_to_rgb("StatusLine", true, colors.red)
 					or colors[bg]
 				local nobg = special_nobg and require("core.settings").transparent_background
 				return {
