@@ -2,7 +2,6 @@ return function()
 	local null_ls = require("null-ls")
 	local mason_null_ls = require("mason-null-ls")
 	local btns = null_ls.builtins
-
 	-- Please set additional flags for the supported servers here
 	-- Don't specify any config here if you are using the default one.
 	local sources = {
@@ -26,9 +25,11 @@ return function()
 			},
 		}),
 		btns.formatting.rustfmt,
+		-- btns.diagnostics.cspell,
+		-- btns.code_actions.cspell,
 		btns.diagnostics.cspell.with({
 			extra_args = {
-				"--config",
+				"-c",
 				vim.fn.expand("~/.config/nvim/cspell/cspell.json"),
 			},
 		}),
