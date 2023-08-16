@@ -26,6 +26,20 @@ return function()
 			},
 		}),
 		btns.formatting.rustfmt,
+		btns.diagnostics.cspell.with({
+			extra_args = {
+				"--config",
+				vim.fn.expand("~/.config/nvim/cspell/cspell.json"),
+			},
+		}),
+		btns.code_actions.cspell.with({
+			config = {
+				find_json = function(cwd)
+					print(cwd)
+					return vim.fn.expand("~/.config/nvim/cspell/cspell.json")
+				end,
+			},
+		}),
 	}
 	null_ls.setup({
 		border = "rounded",

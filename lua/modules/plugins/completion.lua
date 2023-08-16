@@ -71,18 +71,21 @@ completion["hrsh7th/nvim-cmp"] = {
 	},
 }
 if use_copilot then
-	completion["zbirenbaum/copilot.lua"] = {
-		lazy = true,
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = require("completion.copilot"),
-		dependencies = {
-			{
-				"zbirenbaum/copilot-cmp",
-				config = require("completion.copilot-cmp"),
-			},
-		},
-	}
+	-- completion["zbirenbaum/copilot.lua"] = {
+	-- 	lazy = false,
+	-- 	cmd = "Copilot",
+	-- 	event = "InsertEnter",
+	-- 	-- config = require("completion.copilot"),
+	-- 	-- dependencies = {
+	-- 	-- 	{
+	-- 	-- 		"zbirenbaum/copilot-cmp",
+	-- 	-- 		config = require("completion.copilot-cmp"),
+	-- 	-- 	},
+	-- 	-- },
+	-- 	config = function()
+	-- 		require("copilot").setup({})
+	-- 	end,
+	-- }
 end
 
 return completion

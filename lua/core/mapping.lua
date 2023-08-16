@@ -53,6 +53,8 @@ local core_map = {
 	["v|K"] = map_cmd(":m '<-2<CR>gv=gv"):with_desc("edit: Move this line up"),
 	["v|<"] = map_cmd("<gv"):with_desc("edit: Decrease indent"),
 	["v|>"] = map_cmd(">gv"):with_desc("edit: Increase indent"),
+
+	-- remove default keymaps for copilot action
 }
 
 bind.nvim_load_mapping(core_map)

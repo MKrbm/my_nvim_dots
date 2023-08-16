@@ -55,7 +55,7 @@ local plug_map = {
 		:with_silent()
 		:with_noremap()
 		:with_desc("edit: Toggle comment for block with operator"),
-	["x|gc"] = map_cmd("<Plug>(comment_toggle_linewise_visual)")
+	["x|<Space>/"] = map_cmd("<Plug>(comment_toggle_linewise_visual)")
 		:with_silent()
 		:with_noremap()
 		:with_desc("edit: Toggle comment for line with selection"),

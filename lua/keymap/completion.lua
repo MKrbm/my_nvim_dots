@@ -33,6 +33,19 @@ function mapping.lsp(buf)
 		["n|gh"] = map_cr("Glance references"):with_buffer(buf):with_desc("lsp: Show reference"),
 		["n|<leader>ci"] = map_cr("Lspsaga incoming_calls"):with_buffer(buf):with_desc("lsp: Show incoming calls"),
 		["n|<leader>co"] = map_cr("Lspsaga outgoing_calls"):with_buffer(buf):with_desc("lsp: Show outgoing calls"),
+
+		-- copilot keymaps
+		-- ["i|<C-k>"] = map_cr('copilot#Accept("<CR>")')
+		-- 	:with_silent()
+		-- 	:with_noremap()
+		-- 	:with_expr()
+		-- 	:with_desc("Copilot accept"),
+		-- ["i|<C-'>"] = map_cr('copilot#Next("<CR>")'):with_silent():with_noremap():with_expr():with_desc("Copilot Next"),
+		-- ["i|<C-;>"] = map_cr('copilot#Previous("<CR>")')
+		-- 	:with_silent()
+		-- 	:with_noremap()
+		-- 	:with_expr()
+		-- 	:with_desc("Copilot Previous"),
 	}
 	bind.nvim_load_mapping(map)
 end
