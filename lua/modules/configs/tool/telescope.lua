@@ -1,9 +1,32 @@
 return function()
 	local icons = { ui = require("modules.utils.icons").get("ui", true) }
 	local lga_actions = require("telescope-live-grep-args.actions")
+	local actions = require("telescope.actions")
 
 	require("telescope").setup({
+		picker = {
+			buffers = {
+				mappings = {
+					i = {
+						["<C-d>"] = "delete_buffer",
+					},
+					n = {
+						["<C-d>"] = "delete_buffer",
+					},
+				},
+			},
+		},
 		defaults = {
+			mappings = {
+				i = {
+					["<C-e>"] = actions.preview_scrolling_down,
+					["<C-y>"] = actions.preview_scrolling_up,
+					["<C-d>"] = "delete_buffer",
+				},
+				n = {
+					["<C-d>"] = "delete_buffer",
+				},
+			},
 			vimgrep_arguments = {
 				"rg",
 				"--no-heading",

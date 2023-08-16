@@ -2,6 +2,7 @@ return function()
 	local null_ls = require("null-ls")
 	local mason_null_ls = require("mason-null-ls")
 	local btns = null_ls.builtins
+
 	-- Please set additional flags for the supported servers here
 	-- Don't specify any config here if you are using the default one.
 	local sources = {

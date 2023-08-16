@@ -7,7 +7,7 @@ require("catppuccin").setup({
 			FloatBorder = { fg = cp.rosewater },
 			NormalNC = { bg = cp.mantle },
 			Normal = { bg = cp.base },
-			NvimTreeWinSeparator = { fg = cp.red },
+			NvimTreeWinSeparator = { fg = cp.surface1 },
 			StatusLine = { bg = cp.surface0 },
 			StatusLineNC = { bg = cp.surface0 },
 		}
