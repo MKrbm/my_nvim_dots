@@ -17,3 +17,9 @@ require("modules.configs.completion.copilot")
 
 -- vim.g.copilot_no_default_keymap = true
 -- vim.g.copilot_no_tab_map = true
+
+vim.keymap.set("n", "gc", function()
+	require("treesitter-context").go_to_context()
+end, { silent = true, desc = "treesitter: Go to previous context", noremap = true })
+
+vim.o.autochdir = false

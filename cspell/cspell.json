@@ -1,1 +1,47 @@
-{"words":["btns","nvim","rustfmt","builtins"],"languageSettings":[{"locale":"*","ignoreRegExpList":["\/require.*\/"],"languageId":"lua","dictionaries":["lua"]},{"locale":"*","ignoreRegExpList":["\/Plug .*\/"],"languageId":"vim","dictionaries":["vim"]}],"dictionaryDefinitions":[{"name":"dotfiles","path":"~\/.config\/cspell\/dotfiles.txt","description":"dotfiles dictionary"},{"name":"user","path":"~\/.local\/share\/cspell\/user.txt","description":"User local dictionary"},{"name":"vim","path":"~\/.local\/share\/cspell\/vim.txt.gz","description":"Vim Script Language dictionary"}],"allowCompoundWords":true,"dictionaries":["dotfiles","lua","user","vim"]}
+{
+    "version": "0.2",
+    "words": [
+        "tabnext",
+        "noremap",
+        "nowait",
+        "keymap",
+        "nvim",
+        "termcode",
+        "termcodes",
+        "testwierldword",
+        "tscript",
+        "helohelo",
+        "testtseeestst",
+        "unasfsed",
+        "Whatssfup",
+        "teststs",
+        "wubu",
+        "joidofs"
+    ],
+    "allowCompoundWords": true,
+    "language": "en",
+    "flagWords": [],
+    "dictionaries": [
+        "custom-words"
+    ],
+    "dictionaryDefinitions": [
+        {
+            "name": "custom-words",
+            "path": "./ruby.txt",
+            "addWords": true
+        }
+    ],
+    "import": [
+        "/home/user/.nvm/versions/node/v18.17.1/lib/node_modules/@cspell/dict-de-de/cspell-ext.json"
+    ],
+    "overrides": [
+        {
+            "filename": "**/*.md",
+            "language": "en,de",
+            "dictionaries": [
+                "custom-words",
+                "de-de"
+            ]
+        }
+    ]
+}

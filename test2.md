@@ -2,6 +2,22 @@
 
   - Test
   - Toijofe oeopwi
+  - Ich bin ein Berliner.
+
+    - Das ist ein Test. fur die Deutsch lernen.
+    - Umlaut phrases
+      - E.g. "Ausbildung"
+      - E.g. "Gesundheit
+      - Dankeschön
+      - Danke
+      - Umlauts
+      - Lernein (meaning) :
+      - erlernen : to learn
+      - Kern : core
+      - Können : Kann, Kannst, Können, Könnt, Können
+      - Past tense of Können : Konnte, Konntest, Konnten, Konntet, Konnten
+
+  - Thank you.
     rosewater = "#F5E0DC",
     flamingo = "#F2CDCD",
     mauve = "#DDB6F2",

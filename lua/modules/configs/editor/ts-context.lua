@@ -9,4 +9,7 @@ return function()
 		mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
 		zindex = 30,
 	})
+	vim.keymap.set("n", "gc", function()
+		require("treesitter-context").go_to_context()
+	end, { silent = true, desc = "treesitter: Go to previous context", noremap = true })
 end

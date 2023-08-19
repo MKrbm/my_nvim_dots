@@ -23,8 +23,8 @@ local core_map = {
 	["t|<C-k>"] = map_cmd("<Cmd>wincmd k<CR>"):with_silent():with_noremap():with_desc("window: Focus up"),
 	["n|<C-Left>"] = map_cr("vertical resize -5"):with_silent():with_desc("window: Resize -5 vertically"),
 	["n|<C-Right>"] = map_cr("vertical resize +5"):with_silent():with_desc("window: Resize +5 vertically"),
-	["n|<A-Down>"] = map_cr("resize -2"):with_silent():with_desc("window: Resize -2 horizontally"),
-	["n|<A-Up>"] = map_cr("resize +2"):with_silent():with_desc("window: Resize +2 horizontally"),
+	["n|<C-Up>"] = map_cr("resize -2"):with_silent():with_desc("window: Resize -2 horizontally"),
+	["n|<C-Down>"] = map_cr("resize +2"):with_silent():with_desc("window: Resize +2 horizontally"),
 	["n|<C-q>"] = map_cr("wq"):with_desc("edit: Save file and quit"),
 	["n|<A-S-q>"] = map_cr("q!"):with_desc("edit: Force quit"),
 	["n|<leader>o"] = map_cr("setlocal spell! spelllang=en_us"):with_desc("edit: Toggle spell check"),
@@ -59,8 +59,8 @@ local core_map = {
 	["v|>"] = map_cmd(">gv"):with_desc("edit: Increase indent"),
 	["v|^"] = map_cmd("#"):with_noremap():with_silent():with_desc("previous #"),
 	["v|#"] = map_cmd("^"):with_noremap():with_silent():with_desc("beginning of line"),
-	["nv|<leader>]"] = map_cmd("G"):with_desc("end of file"),
-	["nv|<leader>["] = map_cmd("gg"):with_desc("beginning of file"),
+	["nv|<leader>]"] = map_cmd("G"):with_noremap():with_desc("end of file"),
+	["nv|<leader>["] = map_cmd("gg"):with_noremap():with_desc("beginning of file"),
 	-- remove default keymaps for copilot action
 }
 
