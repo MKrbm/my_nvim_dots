@@ -52,6 +52,7 @@ local core_map = {
 	["c|<C-t>"] = map_cmd([[<C-R>=expand("%:p:h") . "/" <CR>]])
 		:with_noremap()
 		:with_desc("edit: Complete path of current file"),
+	["c|<C-v>"] = map_cmd("<C-r>+"):with_noremap():with_desc("pase"),
 	-- Visual mode
 	["v|J"] = map_cmd(":m '>+1<CR>gv=gv"):with_desc("edit: Move this line down"),
 	["v|K"] = map_cmd(":m '<-2<CR>gv=gv"):with_desc("edit: Move this line up"),
@@ -61,6 +62,8 @@ local core_map = {
 	["v|#"] = map_cmd("^"):with_noremap():with_silent():with_desc("beginning of line"),
 	["nv|<leader>]"] = map_cmd("G"):with_noremap():with_desc("end of file"),
 	["nv|<leader>["] = map_cmd("gg"):with_noremap():with_desc("beginning of file"),
+	--terminal
+	["t|<C-v>"] = map_cmd("<S-C-v>"):with_noremap():with_desc("pase"),
 	-- remove default keymaps for copilot action
 }
 
