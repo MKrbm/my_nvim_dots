@@ -21,5 +21,3 @@ require("modules.configs.completion.copilot")
 vim.keymap.set("n", "gc", function()
 	require("treesitter-context").go_to_context()
 end, { silent = true, desc = "treesitter: Go to previous context", noremap = true })
-
-vim.o.autochdir = "false"
