@@ -1,5 +1,23 @@
 {
     "version": "0.2",
+    "language": "en",
+    "dictionaryDefinitions": [
+        {
+            "addWords": true,
+            "name": "custom-words",
+            "path": ".\/ruby.txt"
+        }
+    ],
+    "overrides": [
+        {
+            "language": "en,de",
+            "dictionaries": [
+                "custom-words",
+                "de-de"
+            ],
+            "filename": "**\/*.md"
+        }
+    ],
     "words": [
         "tabnext",
         "noremap",
@@ -16,32 +34,62 @@
         "Whatssfup",
         "teststs",
         "wubu",
-        "joidofs"
+        "joidofs",
+        "btns",
+        "rustfmt"
     ],
     "allowCompoundWords": true,
-    "language": "en",
+    "import": [
+        "\/home\/user\/.nvm\/versions\/node\/v18.17.1\/lib\/node_modules\/@cspell\/dict-de-de\/cspell-ext.json"
+    ],
     "flagWords": [],
     "dictionaries": [
         "custom-words"
-    ],
-    "dictionaryDefinitions": [
-        {
-            "name": "custom-words",
-            "path": "./ruby.txt",
-            "addWords": true
-        }
-    ],
-    "import": [
-        "/home/user/.nvm/versions/node/v18.17.1/lib/node_modules/@cspell/dict-de-de/cspell-ext.json"
-    ],
-    "overrides": [
-        {
-            "filename": "**/*.md",
-            "language": "en,de",
-            "dictionaries": [
-                "custom-words",
-                "de-de"
-            ]
-        }
     ]
-}
+}               
+
+
+    
+        
+        
+        
+    
+
+
+    
+        
+        
+            
+            
+        
+        
+    
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+    
+
+
+
+    
+

@@ -59,12 +59,12 @@ local plug_map = {
 		:with_silent()
 		:with_desc("terminal: Toggle float"),
 	["t|<A-i>"] = map_cmd("<Cmd>ToggleTerm<CR>"):with_noremap():with_silent():with_desc("terminal: Toggle float"),
-	["n|<leader>g"] = map_callback(function()
-			_toggle_lazygit()
-		end)
-		:with_noremap()
-		:with_silent()
-		:with_desc("git: Toggle lazygit"),
+	-- ["n|<leader>g"] = map_callback(function()
+	-- 		_toggle_lazygit()
+	-- 	end)
+	-- 	:with_noremap()
+	-- 	:with_silent()
+	-- 	:with_desc("git: Toggle lazygit"),
 
 	-- Plugin: trouble
 	["n|gt"] = map_cr("TroubleToggle"):with_noremap():with_silent():with_desc("lsp: Toggle trouble list"),

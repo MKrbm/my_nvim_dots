@@ -21,3 +21,14 @@ require("modules.configs.completion.copilot")
 vim.keymap.set("n", "gc", function()
 	require("treesitter-context").go_to_context()
 end, { silent = true, desc = "treesitter: Go to previous context", noremap = true })
+
+-- Define the profiling function
+_G.command_profile = function()
+	vim.api.nvim_command("profile start profile.txt")
+	vim.api.nvim_command("profile func *")
+	vim.api.nvim_command("profile file *")
+	print("test profil")
+end
+
+-- Create the Neovim command
+vim.api.nvim_command("command! Profile lua command_profile()")

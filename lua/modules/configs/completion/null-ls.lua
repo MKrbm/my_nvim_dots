@@ -1,7 +1,6 @@
 return function()
 	local null_ls = require("null-ls")
 	local mason_null_ls = require("mason-null-ls")
-	local cspell = require("cspell")
 	local btns = null_ls.builtins
 	local _cwd = vim.fn.stdpath("config")
 	local CONFIG_PATH = vim.fn.expand(vim.fn.expand(_cwd .. "/cspell/cspell.json"))
@@ -46,25 +45,25 @@ return function()
 		-- 	config = config,
 		-- }),
 
-		cspell.diagnostics,
-		cspell.code_actions,
+		-- cspell.diagnostics,
+		-- cspell.code_actions,
 
 		-- btns.diagnostics.cspell,
 		-- btns.code_actions.cspell,
-		-- btns.diagnostics.cspell.with({
-		-- 	extra_args = {
-		-- 		"-c",
-		-- 		vim.fn.expand("~/.config/nvim/cspell/cspell.json"),
-		-- 	},
-		-- }),
-		-- btns.code_actions.cspell.with({
-		-- 	config = {
-		-- 		find_json = function(cwd)
-		-- 			print(cwd)
-		-- 			return vim.fn.expand("~/.config/nvim/cspell/cspell.json")
-		-- 		end,
-		-- 	},
-		-- }),
+		btns.diagnostics.cspell.with({
+			extra_args = {
+				"-c",
+				vim.fn.expand("~/.config/nvim/cspell/cspell.json"),
+			},
+		}),
+		btns.code_actions.cspell.with({
+			config = {
+				find_json = function(cwd)
+					print(cwd)
+					return vim.fn.expand("~/.config/nvim/cspell/cspell.json")
+				end,
+			},
+		}),
 	}
 	null_ls.setup({
 		border = "rounded",
