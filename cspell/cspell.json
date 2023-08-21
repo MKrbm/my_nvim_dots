@@ -1,23 +1,5 @@
 {
     "version": "0.2",
-    "language": "en",
-    "dictionaryDefinitions": [
-        {
-            "addWords": true,
-            "name": "custom-words",
-            "path": ".\/ruby.txt"
-        }
-    ],
-    "overrides": [
-        {
-            "language": "en,de",
-            "dictionaries": [
-                "custom-words",
-                "de-de"
-            ],
-            "filename": "**\/*.md"
-        }
-    ],
     "words": [
         "tabnext",
         "noremap",
@@ -36,60 +18,38 @@
         "wubu",
         "joidofs",
         "btns",
-        "rustfmt"
+        "rustfmt",
+        "Ausbildung",
+        "Dankeschön",
+        "Danke",
+        "autocmd",
+        "Lernein",
+        "erlernen",
+        "Tesoieeess"
     ],
     "allowCompoundWords": true,
-    "import": [
-        "\/home\/user\/.nvm\/versions\/node\/v18.17.1\/lib\/node_modules\/@cspell\/dict-de-de\/cspell-ext.json"
-    ],
-    "flagWords": [],
     "dictionaries": [
         "custom-words"
-    ]
-}               
-
-
-    
-        
-        
-        
-    
-
-
-    
-        
-        
-            
-            
-        
-        
-    
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-
-    
-
-
-
-    
-
+    ],
+    "languageSettings": [
+        {
+            "locale": "*",
+            "dictionaries": [
+                "de-de"
+            ],
+            "languageId": "markdown"
+        }
+    ],
+    "language": "en",
+    "import": [
+        ".\/Deutsch\/lang.json"
+    ],
+    "dictionaryDefinitions": [
+        {
+            "name": "custom-words",
+            "addWords": true,
+            "path": ".\/ruby.txt"
+        }
+    ],
+    "flagWords": []
+}

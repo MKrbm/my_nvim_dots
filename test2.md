@@ -16,6 +16,21 @@
       - Kern : core
       - Können : Kann, Kannst, Können, Könnt, Können
       - Past tense of Können : Konnte, Konntest, Konnten, Konntet, Konnten
+      - Tesoieeess
+      - oijoijwef
+      - weecesyxx
+      - Testimoniee
+      - Estonia is you
+      - Rwlfswoch
+      - EESSE1e23
+      - tesoijof
+      - oeijsf
+      - Ich bin ein Berliner.
+      - oseanianian
+      - Why it starts to deisapper woifjaoisd?
+
+  -- Ich habe keine Ahnung, was das hier macht, aber es funktioniert.
+  -- Ich habe keine Absicht, dies zu tun.
 
   - Thank you.
     rosewater = "#F5E0DC",
