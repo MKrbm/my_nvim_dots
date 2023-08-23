@@ -37,7 +37,7 @@ completion["jose-elias-alvarez/null-ls.nvim"] = {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"jay-babu/mason-null-ls.nvim",
-		"davidmh/cspell.nvim",
+		-- "davidmh/cspell.nvim",
 	},
 }
 completion["hrsh7th/nvim-cmp"] = {

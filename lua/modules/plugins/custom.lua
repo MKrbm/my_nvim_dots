@@ -24,4 +24,21 @@ custom["chentoast/marks.nvim"] = {
 	end,
 }
 
+custom["folke/zen-mode.nvim"] = {
+	lazy = false,
+	opts = {
+		window = {
+			backdrop = 0.9,
+			width = 123,
+		},
+	},
+}
+
+-- custom["lewis6991/spellsitter.nvim"] = {
+-- 	lazy = false,
+-- 	config = function()
+-- 		require("spellsitter").setup()
+-- 	end,
+-- 	wants = { "nvim-treesitter" },
+-- }
 return custom

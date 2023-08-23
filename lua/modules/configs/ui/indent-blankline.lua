@@ -4,8 +4,8 @@ return function()
 		context_char = "┃",
 		show_trailing_blankline_indent = false,
 		show_first_indent_level = true,
-		show_current_context = true,
-		show_current_context_start = true,
+		show_current_context = false,
+		show_current_context_start = false,
 		filetype_exclude = {
 			"", -- for all buffers without a file type
 			"dashboard",
