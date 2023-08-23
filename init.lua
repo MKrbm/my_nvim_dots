@@ -33,6 +33,9 @@ end
 vim.api.nvim_command("command! Profile lua command_profile()")
 vim.g.mkdp_echo_preview_url = 1
 vim.g.mkdp_browser = ""
+vim.g.mkdp_port = "8899"
+vim.g.mkdp_open_to_the_world = 1
+vim.g.mkdp_open_ip = "127.0.0.1"
 
 -- vim.opt.spelllang = "en_us"
 -- vim.opt.spell = true

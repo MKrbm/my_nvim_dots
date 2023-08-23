@@ -13,6 +13,7 @@ CLONE_ATTR=("--progress")
 REQUIRED_NVIM_VERSION=0.9.0
 REQUIRED_NVIM_VERSION_LEGACY=0.8.0
 USE_SSH=1
+REPO="https://github.com/MKrbm/my_nvim_dots.git"
 
 abort() {
 	printf "%s\n" "$@" >&2
@@ -253,35 +254,23 @@ fi
 info "Fetching in progress..."
 if [[ "${USE_SSH}" -eq "1" ]]; then
 	if check_nvim_version "${REQUIRED_NVIM_VERSION}"; then
-		execute "git" "clone" "-b" "main" "${CLONE_ATTR[@]}" "git@github.com:ayamir/nvimdots.git" "${DEST_DIR}"
+		execute "git" "clone" "-b" "main" "${CLONE_ATTR[@]}" "${REPO}" "${DEST_DIR}"
 	elif check_nvim_version "${REQUIRED_NVIM_VERSION_LEGACY}"; then
-		warn "You have outdated Nvim installed (< ${REQUIRED_NVIM_VERSION})."
-		info "Automatically redirecting you to the latest compatible version..."
-		execute "git" "clone" "-b" "0.8" "${CLONE_ATTR[@]}" "git@github.com:ayamir/nvimdots.git" "${DEST_DIR}"
+		warn "You have outdated Nvim..."
+		execute "git" "clone" "-b" "0.8" "${CLONE_ATTR[@]}" "${REPO}" "${DEST_DIR}"
 	else
-		warn "You have outdated Nvim installed (< ${REQUIRED_NVIM_VERSION_LEGACY})."
-		abort "$(
-			cat <<EOABORT
-You have a legacy Neovim distribution installed.
-Please make sure you have nvim v${REQUIRED_NVIM_VERSION_LEGACY} installed at the very least.
-EOABORT
-		)"
+		warn "You have outdated Nvim..."
+		abort "Please upgrade to at least ${REQUIRED_NVIM_VERSION_LEGACY}"
 	fi
 else
 	if check_nvim_version "${REQUIRED_NVIM_VERSION}"; then
-		execute "git" "clone" "-b" "main" "${CLONE_ATTR[@]}" "https://github.com/ayamir/nvimdots.git" "${DEST_DIR}"
+		execute "git" "clone" "-b" "main" "${CLONE_ATTR[@]}" "${REPO}" "${DEST_DIR}"
 	elif check_nvim_version "${REQUIRED_NVIM_VERSION_LEGACY}"; then
-		warn "You have outdated Nvim installed (< ${REQUIRED_NVIM_VERSION})."
-		info "Automatically redirecting you to the latest compatible version..."
-		execute "git" "clone" "-b" "0.8" "${CLONE_ATTR[@]}" "https://github.com/ayamir/nvimdots.git" "${DEST_DIR}"
+		warn "You have outdated Nvim..."
+		execute "git" "clone" "-b" "0.8" "${CLONE_ATTR[@]}" "${REPO}" "${DEST_DIR}"
 	else
-		warn "You have outdated Nvim installed (< ${REQUIRED_NVIM_VERSION_LEGACY})."
-		abort "$(
-			cat <<EOABORT
-You have a legacy Neovim distribution installed.
-Please make sure you have nvim v${REQUIRED_NVIM_VERSION_LEGACY} installed at the very least.
-EOABORT
-		)"
+		warn "You have outdated Nvim..."
+		abort "Please upgrade to at least ${REQUIRED_NVIM_VERSION_LEGACY}"
 	fi
 fi
 
