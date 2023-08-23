@@ -7,7 +7,6 @@ local map = vim.api.nvim_set_keymap
 
 -- Options
 local options = { noremap = true, silent = true }
-
 map("n", "dd", '"ddd', options)
 map("n", "D", '"dD', options)
 map("n", "x", '"dx', options)
@@ -60,9 +59,13 @@ local core_map = {
 	["i|<C-a>"] = map_cmd("<ESC>^i"):with_noremap():with_desc("edit: Move cursor to line start"),
 	["i|<C-s>"] = map_cmd("<Esc>:w<CR>"):with_desc("edit: Save file"),
 	["i|<C-q>"] = map_cmd("<Esc>:wq<CR>"):with_desc("edit: Save file and quit"),
-	["i|<C-w>"] = map_cmd("<C-G>u<C-U>"):with_noremap():with_silent():with_desc("edit: Save file and quit"),
+	-- ["i|<C-w>"] = map_cmd("<C-G>u<C-U>"):with_noremap():with_silent():with_desc("edit: Save file and quit"),
 	["i|<M-]>"] = map_cmd("<C-t>"):with_noremap():with_silent():with_desc("insert indent"),
 	["i|<M-[>"] = map_cmd("<C-d>"):with_noremap():with_silent():with_desc("delete indent"),
+
+	-- ["i|<S-w>"] = map_cmd("<C-w>"):with_noremap():with_silent():with_desc("delete one word"),
+	-- ["c|<S-w>"] = map_cmd("<C-w>"):with_noremap():with_silent():with_desc("delete a word"),
+	-- ["t|<S-w>"] = map_cmd("<C-w>"):with_noremap():with_silent():with_desc("delete a word"),
 
 	-- Command mode
 	["c|<C-b>"] = map_cmd("<Left>"):with_noremap():with_desc("edit: Left"),
@@ -70,7 +73,7 @@ local core_map = {
 	["c|<C-a>"] = map_cmd("<Home>"):with_noremap():with_desc("edit: Home"),
 	["c|<C-e>"] = map_cmd("<End>"):with_noremap():with_desc("edit: End"),
 	["c|<C-d>"] = map_cmd("<Del>"):with_noremap():with_desc("edit: Delete"),
-	["c|<C-h>"] = map_cmd("<BS>"):with_noremap():with_desc("edit: Backspace"),
+	-- ["c|<C-h>"] = map_cmd("<BS>"):with_noremap():with_desc("edit: Backspace"),
 	["c|<C-t>"] = map_cmd([[<C-R>=expand("%:p:h") . "/" <CR>]])
 		:with_noremap()
 		:with_desc("edit: Complete path of current file"),

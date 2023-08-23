@@ -1,0 +1,196 @@
+FUNCTION  provider#clipboard#Call()
+    Defined: /usr/share/nvim/runtime/autoload/provider/clipboard.vim:241
+Called 2 times
+Total time:   0.004279
+ Self time:   0.000093
+
+count  total (s)   self (s)
+    2              0.000030   if get(s:, 'here', v:false)  " Clipboard provider must not recurse. #7184
+                                return 0
+    2              0.000002   endif
+    2              0.000006   let s:here = v:true
+    2              0.000001   try
+    2   0.004220   0.000034     return call(s:clipboard[a:method],a:args,s:clipboard)
+    2              0.000002   finally
+    2              0.000003     let s:here = v:false
+    2              0.000001   endtry
+
+FUNCTION  1()
+    Defined: /usr/share/nvim/runtime/autoload/provider/clipboard.vim:22
+Called 1 time
+Total time:   0.000021
+ Self time:   0.000021
+
+count  total (s)   self (s)
+                              " At this point this nvim instance might already have launched
+                              " a new provider instance. Don't drop ownership in this case.
+    1              0.000007   if self.owner == a:jobid
+    1              0.000004     let self.owner = 0
+    1              0.000001   endif
+    1              0.000001   if a:data != 0
+                                echohl WarningMsg
+                                echomsg 'clipboard: error invoking '.get(self.argv, 0, '?').': '.join(self.stderr)
+                                echohl None
+    1              0.000000   endif
+
+FUNCTION  3()
+    Defined: /usr/share/nvim/runtime/autoload/provider/clipboard.vim:182
+Called 2 times
+Total time:   0.004186
+ Self time:   0.004186
+
+count  total (s)   self (s)
+    2              0.000008   if a:reg == '"'
+                                call s:clipboard.set(a:lines,a:regtype,'+')
+                                if s:copy['*'] != s:copy['+']
+                                  call s:clipboard.set(a:lines,a:regtype,'*')
+                                end
+                                return 0
+    2              0.000000   end
+                            
+    2              0.000006   if type(s:copy[a:reg]) == v:t_func
+                                call s:copy[a:reg](a:lines, a:regtype)
+                                return 0
+    2              0.000000   end
+                            
+    2              0.000001   if s:cache_enabled == 0
+                                call s:try_cmd(s:copy[a:reg], a:lines)
+                                "Cache it anyway we can compare it later to get regtype of the yank
+                                let s:selections[a:reg] = copy(s:selection)
+                                let s:selections[a:reg].data = [a:lines, a:regtype]
+                                return 0
+    2              0.000000   end
+                            
+    2              0.000004   if s:selections[a:reg].owner > 0
+    1              0.000001     let prev_job = s:selections[a:reg].owner
+    2              0.000000   end
+    2              0.000014   let s:selections[a:reg] = copy(s:selection)
+    2              0.000002   let selection = s:selections[a:reg]
+    2              0.000003   let selection.data = [a:lines, a:regtype]
+    2              0.000002   let selection.argv = s:copy[a:reg]
+    2              0.000002   let selection.detach = s:cache_enabled
+    2              0.000002   let selection.cwd = "/"
+    2              0.004018   let jobid = jobstart(selection.argv, selection)
+    2              0.000007   if jobid > 0
+    2              0.000020     call jobsend(jobid, a:lines)
+    2              0.000005     call jobclose(jobid, 'stdin')
+                                " xclip does not close stdout when receiving input via stdin
+    2              0.000005     if selection.argv[0] ==# 'xclip'
+    2              0.000003       call jobclose(jobid, 'stdout')
+    2              0.000001     endif
+    2              0.000003     let selection.owner = jobid
+    2              0.000002     let ret = 1
+                              else
+                                echohl WarningMsg
+                                echomsg 'clipboard: failed to execute: '.(s:copy[a:reg])
+                                echohl None
+                                let ret = 1
+    2              0.000001   endif
+                            
+                              " The previous provider instance should exit when the new one takes
+                              " ownership, but kill it to be sure we don't fill up the job table.
+    2              0.000003   if exists('prev_job')
+    1              0.000011     call timer_start(1000, {... -> jobwait([prev_job], 0)[0] == -1 && jobstop(prev_job)})
+    2              0.000001   endif
+                            
+    2              0.000004   return ret
+
+FUNCTION  <SNR>39_StartHL()
+    Defined: ~/.local/share/nvim/site/lazy/vim-cool/plugin/cool.vim:28
+Called 28 times
+Total time:   0.000244
+ Self time:   0.000244
+
+count  total (s)   self (s)
+   28              0.000158     if !v:hlsearch || mode() isnot 'n'
+   28              0.000049         return
+                                endif
+                                let g:cool_is_searching = 1
+                                let [pos, rpos] = [winsaveview(), getpos('.')]
+                                silent! exe "keepjumps go".(line2byte('.')+col('.')-(v:searchforward ? 2 : 0))
+                                try
+                                    silent keepjumps norm! n
+                                    if getpos('.') != rpos
+                                        throw 0
+                                    endif
+                                catch /^\%(0$\|Vim\%(\w\|:Interrupt$\)\@!\)/
+                                    call <SID>StopHL()
+                                    return
+                                finally
+                                    call winrestview(pos)
+                                endtry
+                                if !get(g:,'cool_total_matches') || !exists('*reltimestr')
+                                    return
+                                endif
+                                exe "silent! norm! :let g:cool_char=nr2char(screenchar(screenrow(),1))\<cr>"
+                                let cool_char = remove(g:,'cool_char')
+                                if cool_char !~ '[/?]'
+                                    return
+                                endif
+                                let [f, ws, now, noOf] = [0, &wrapscan, reltime(), [0,0]]
+                                set nowrapscan
+                                try
+                                    while f < 2
+                                        if reltimestr(reltime(now))[:-6] =~ '[1-9]'
+                                            " time >= 100ms
+                                            return
+                                        endif
+                                        let noOf[v:searchforward ? f : !f] += 1
+                                        try
+                                            silent exe "keepjumps norm! ".(f ? 'n' : 'N')
+                                        catch /^Vim[^)]\+):E38[45]\D/
+                                            call setpos('.',rpos)
+                                            let f += 1
+                                        endtry
+                                    endwhile
+                                finally
+                                    call winrestview(pos)
+                                    let &wrapscan = ws
+                                endtry
+                                redraw|echo cool_char.@/ 'match' noOf[0] 'of' noOf[0] + noOf[1] - 1
+
+FUNCTION  <SNR>39_StopHL()
+    Defined: ~/.local/share/nvim/site/lazy/vim-cool/plugin/cool.vim:77
+Called 3 times
+Total time:   0.000020
+ Self time:   0.000020
+
+count  total (s)   self (s)
+    3              0.000010     if !v:hlsearch || mode() isnot 'n' || &buftype == 'terminal'
+    3              0.000003         return
+                                else
+                                    let g:cool_is_searching = 0
+                                    silent call feedkeys("\<Plug>(StopHL)", 'm')
+                                endif
+
+FUNCTION  <SNR>67_try()
+    Defined: ~/.local/share/nvim/site/lazy/indent-blankline.nvim/plugin/indent_blankline.vim:7
+Called 9 times
+Total time:   0.012762
+ Self time:   0.012762
+
+count  total (s)   self (s)
+    9              0.000017     try
+    9              0.012691         execute a:cmd
+                                catch /E12/
+                                    return
+    9              0.000010     endtry
+
+FUNCTIONS SORTED ON TOTAL TIME
+count  total (s)   self (s)  function
+    9   0.012762             <SNR>67_try()
+    2   0.004279   0.000093  provider#clipboard#Call()
+    2   0.004186             3()
+   28   0.000244             <SNR>39_StartHL()
+    1   0.000021             1()
+    3   0.000020             <SNR>39_StopHL()
+
+FUNCTIONS SORTED ON SELF TIME
+count  total (s)   self (s)  function
+    9              0.012762  <SNR>67_try()
+    2              0.004186  3()
+   28              0.000244  <SNR>39_StartHL()
+    2   0.004279   0.000093  provider#clipboard#Call()
+    1              0.000021  1()
+    3              0.000020  <SNR>39_StopHL()
+
