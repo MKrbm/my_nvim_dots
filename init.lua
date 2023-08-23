@@ -27,8 +27,12 @@ _G.command_profile = function()
 	vim.api.nvim_command("profile start profile.txt")
 	vim.api.nvim_command("profile func *")
 	vim.api.nvim_command("profile file *")
-	print("test profil")
 end
 
 -- Create the Neovim command
 vim.api.nvim_command("command! Profile lua command_profile()")
+vim.g.mkdp_echo_preview_url = 1
+vim.g.mkdp_browser = ""
+
+-- vim.opt.spelllang = "en_us"
+-- vim.opt.spell = true

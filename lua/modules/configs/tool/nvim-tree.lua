@@ -1,3 +1,18 @@
+local function my_on_attach(bufnr)
+	local api = require("nvim-tree.api")
+
+	local function opts(desc)
+		return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+	end
+
+	-- default mappings
+	api.config.mappings.default_on_attach(bufnr)
+
+	-- custom mappings
+	vim.keymap.set("n", "f", "", opts("Delete filter"))
+	-- vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
+end
+
 return function()
 	local icons = {
 		diagnostics = require("modules.utils.icons").get("diagnostics"),
@@ -7,6 +22,7 @@ return function()
 	}
 
 	require("nvim-tree").setup({
+		on_attach = my_on_attach,
 		auto_reload_on_write = true,
 		create_in_closed_folder = false,
 		disable_netrw = false,
@@ -156,10 +172,10 @@ return function()
 			cmd = "gio trash",
 			require_confirm = true,
 		},
-		live_filter = {
-			prefix = "[FILTER]: ",
-			always_show_folders = true,
-		},
+		-- live_filter = {
+		-- 	prefix = "[FILTER]: ",
+		-- 	always_show_folders = true,
+		-- },
 		log = {
 			enable = false,
 			truncate = false,
