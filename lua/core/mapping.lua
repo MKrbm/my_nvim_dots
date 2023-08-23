@@ -2,6 +2,17 @@ local bind = require("keymap.bind")
 local map_cr = bind.map_cr
 local map_cu = bind.map_cu
 local map_cmd = bind.map_cmd
+-- Set up your mappings
+local map = vim.api.nvim_set_keymap
+
+-- Options
+local options = { noremap = true, silent = true }
+
+map("n", "dd", '"ddd', options)
+map("n", "D", '"dD', options)
+map("n", "x", '"dx', options)
+map("n", "<S-x>", '"d<S-x>', options)
+map("v", "d", '"dd', options)
 
 local core_map = {
 	-- Suckless
@@ -34,14 +45,25 @@ local core_map = {
 	["n|to"] = map_cr("tabonly"):with_noremap():with_silent():with_desc("tab: Only keep current tab"),
 	["n|^"] = map_cmd("#"):with_noremap():with_silent():with_desc("previous #"),
 	["n|#"] = map_cmd("^"):with_noremap():with_silent():with_desc("beginning of line"),
-	["n|<leader>h"] = map_cr("sp"):with_noremap():with_silent():with_desc("beginning of line"),
-	["n|<leader>v"] = map_cmd("vs"):with_noremap():with_silent():with_desc("beginning of line"),
+	["n|<leader>h"] = map_cr("sp"):with_noremap():with_silent():with_desc("split horizontally"),
+	["n|<leader>v"] = map_cr("vs"):with_noremap():with_silent():with_desc("split vertically"),
+	["n|<leader>zz"] = map_cr("ZenMode"):with_noremap():with_silent():with_desc("split vertically"),
+	-- ["n|<leader>zc"] = map_cr("close"):with_noremap():with_silent():with_desc("split vertically"),
+	-- ["n|dd"] = map_cr('"cdd'):with_noremap():with_silent():with_desc("beginning of line"),
+	-- ["n|D"] = map_cr('"cD'):with_noremap():with_silent():with_desc("beginning of line"),
+	-- ["n|x"] = map_cr('"cx'):with_noremap():with_silent():with_desc("beginning of line"),
+	-- ["n|<S-x>"] = map_cr('"c<S-x>'):with_noremap():with_silent():with_desc("beginning of line"),
+
 	-- Insert mode
 	["i|<C-u>"] = map_cmd("<C-G>u<C-U>"):with_noremap():with_desc("edit: Delete previous block"),
 	["i|<C-b>"] = map_cmd("<Left>"):with_noremap():with_desc("edit: Move cursor to left"),
 	["i|<C-a>"] = map_cmd("<ESC>^i"):with_noremap():with_desc("edit: Move cursor to line start"),
 	["i|<C-s>"] = map_cmd("<Esc>:w<CR>"):with_desc("edit: Save file"),
 	["i|<C-q>"] = map_cmd("<Esc>:wq<CR>"):with_desc("edit: Save file and quit"),
+	["i|<C-w>"] = map_cmd("<C-G>u<C-U>"):with_noremap():with_silent():with_desc("edit: Save file and quit"),
+	["i|<M-]>"] = map_cmd("<C-t>"):with_noremap():with_silent():with_desc("insert indent"),
+	["i|<M-[>"] = map_cmd("<C-d>"):with_noremap():with_silent():with_desc("delete indent"),
+
 	-- Command mode
 	["c|<C-b>"] = map_cmd("<Left>"):with_noremap():with_desc("edit: Left"),
 	["c|<C-f>"] = map_cmd("<Right>"):with_noremap():with_desc("edit: Right"),

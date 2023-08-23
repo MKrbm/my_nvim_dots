@@ -18,8 +18,8 @@ return vim.schedule_wrap(function()
 			"latex",
 			"lua",
 			"make",
-			-- "markdown",
-			-- "markdown_inline",
+			"markdown",
+			"markdown_inline",
 			"python",
 			"rust",
 			"typescript",
@@ -29,7 +29,10 @@ return vim.schedule_wrap(function()
 		},
 		highlight = {
 			enable = true,
-			disable = function(ft, bufnr)
+			disable = function(ft, bufnr) -- Disable for markdown files
+				if ft == "markdown" then
+					return true
+				end
 				if vim.tbl_contains({ "vim" }, ft) then
 					return true
 				end
@@ -37,7 +40,7 @@ return vim.schedule_wrap(function()
 				local ok, is_large_file = pcall(vim.api.nvim_buf_get_var, bufnr, "bigfile_disable_treesitter")
 				return ok and is_large_file
 			end,
-			additional_vim_regex_highlighting = { "c", "cpp" },
+			-- additional_vim_regex_highlighting = { "c", "cpp" },
 		},
 		textobjects = {
 			select = {

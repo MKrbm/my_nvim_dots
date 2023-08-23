@@ -30,6 +30,13 @@ local plug_map = {
 		return et("<Plug>(clever-f-repeat-back)")
 	end):with_expr(),
 
+	["v|;"] = map_callback(function()
+		return et("<Plug>(clever-f-repeat-forward)")
+	end):with_expr(),
+	["v|,"] = map_callback(function()
+		return et("<Plug>(clever-f-repeat-back)")
+	end):with_expr(),
+
 	-- Plugin: comment.nvim
 	["n|<leader>/"] = map_callback(function()
 			return vim.v.count == 0 and et("<Plug>(comment_toggle_linewise_current)")
@@ -77,7 +84,7 @@ local plug_map = {
 	["nv|gk"] = map_cmd("<Cmd>HopLineMW<CR>"):with_noremap():with_desc("jump: Goto line"),
 	["nv|gs"] = map_cmd("<Cmd>HopChar1MW<CR>"):with_noremap():with_desc("jump: Goto one char"),
 	["nv|gg"] = map_cmd("<Cmd>HopChar2MW<CR>"):with_noremap():with_desc("jump: Goto two chars"),
-
+	["nv|\\"] = map_cmd("<Cmd>HopChar2MW<CR>"):with_noremap():with_desc("jump: Goto two chars"),
 	-- Plugin: treehopper
 	["o|m"] = map_cu("lua require('tsht').nodes()"):with_silent():with_desc("jump: Operate across syntax tree"),
 
